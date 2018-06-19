@@ -2,24 +2,32 @@ package com.littonishir.github
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import android.view.View
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        textview.setOnClickListener {
-            Settings.email = et1.text.toString()
-            Settings.password = et2.text.toString()
+        val value = Games("", "2")
+        val textView = TextView(this)
+        textView.setOnClickListener {object : View.OnClickListener {
+                override fun onClick(view: View?) {
+                    textView.text = "hi"
+                }
+            }
         }
-        textview2.setOnClickListener {
-            var s = "${Settings.email},${Settings.password}"
-//            Settings.email = et1.text.toString()
-//            Settings.password = et2.text.toString()
-            textview2.text = s
 
+        operator fun String.times(time: Int): String {
+            val stringBuilder = StringBuilder()
+            for (i in 0 until time) {
+                stringBuilder.append(this + "\n")
+            }
+            return stringBuilder.toString()
         }
+
 
     }
 
